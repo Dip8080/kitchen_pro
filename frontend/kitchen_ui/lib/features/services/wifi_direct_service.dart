@@ -32,7 +32,6 @@ class WiFiDirectService {
     });
 
     nearbyService.dataReceivedSubscription(callback: (data) {
-      // Handle incoming data
     });
   }
 
