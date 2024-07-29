@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_nearby_connections/flutter_nearby_connections.dart';
+import 'package:kitchen_ui/features/models/message.dart';
 
 class WiFiDirectService {
   final NearbyService nearbyService = NearbyService();
@@ -36,7 +36,7 @@ class WiFiDirectService {
     });
   }
 
-  Future<void> sendMessage(Message message, String recipientId) async {
+  Future<void> sendMessage(Messages message, String recipientId) async {
     final device = connectedDevices.firstWhere((device) => device.deviceId == recipientId, orElse: () => null);
     if (device != null) {
       await nearbyService.sendMessage(
@@ -46,5 +46,5 @@ class WiFiDirectService {
     }
   }
 
-  Stream<Message> get messages => nearbyService.dataReceivedStream.map((data) => Message.fromJson(data));
+  Stream<Messages> get messages => nearbyService.dataReceivedStream.map((data) => Message.fromJson(data));
 }
