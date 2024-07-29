@@ -37,7 +37,7 @@ class WiFiDirectService {
   }
 
   Future<void> sendMessage(Messages message, String recipientId) async {
-    final device = connectedDevices.firstWhere((device) => device.deviceId == recipientId, orElse: () => null);
+    final device = connectedDevices.firstWhere((device) => device.deviceId == recipientId);
     if (device != null) {
       await nearbyService.sendMessage(
         device.deviceId,
@@ -46,5 +46,5 @@ class WiFiDirectService {
     }
   }
 
-  Stream<Messages> get messages => nearbyService.dataReceivedStream.map((data) => Message.fromJson(data));
+  Stream<Messages> get messages => nearbyService.dataReceivedSubscription(callback: (data) => Message.fromJson(data)).
 }
