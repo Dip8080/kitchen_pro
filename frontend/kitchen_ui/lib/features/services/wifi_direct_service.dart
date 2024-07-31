@@ -45,5 +45,6 @@ class WiFiDirectService {
     }
   }
 
-  Stream<Messages> get messages => nearbyService.dataReceivedSubscription(callback: (data) => Message.fromJson(data)).
+  Stream<Messages> get messages => nearbyService.dataReceivedSubscription(callback: (data) => Message.fromJson(data))
+  // this is the stream that will emit the message
 }
