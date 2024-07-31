@@ -3,12 +3,14 @@ class Messages {
   final String senderId;
   final String text;
   final String timeStamp;
+  final int type;
 
   Messages({
     required this.id,
     required this.senderId,
     required this.text,
     required this.timeStamp,
+    required this.type,
   });
 
   factory Messages.fromJson(Map<String, dynamic> json) {
@@ -16,7 +18,8 @@ class Messages {
         id: json['id'],
         senderId: json['senderId'],
         text: json['text'],
-        timeStamp: json['timeStamp']);
+        timeStamp: json['timeStamp'],
+        type: json['type']);
   }
 
   Map<String, dynamic> toJson() {
@@ -24,7 +27,8 @@ class Messages {
       'id':id,
       'senderId': senderId,
       'text' : text,
-      'timestamp' : timeStamp.toString()
+      'timestamp' : timeStamp.toString(),
+      'type' : type
     };
   }
 }
